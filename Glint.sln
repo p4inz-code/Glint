@@ -1,0 +1,39 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glint.Core", "src\Glint.Core\Glint.Core.csproj", "{64DCEA9B-37DD-4DCE-A4EF-D44367D0982C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glint.Windows", "src\Glint.Windows\Glint.Windows.csproj", "{7B06948D-3287-42F3-87F5-A203B492A45E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glint.UI", "src\Glint.UI\Glint.UI.csproj", "{3D23B693-C196-418C-90C7-D79A5A30D98A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glint.App", "src\Glint.App\Glint.App.csproj", "{EFD7BE4E-6C4A-429D-A89E-425287A14EFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64DCEA9B-37DD-4DCE-A4EF-D44367D0982C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64DCEA9B-37DD-4DCE-A4EF-D44367D0982C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64DCEA9B-37DD-4DCE-A4EF-D44367D0982C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64DCEA9B-37DD-4DCE-A4EF-D44367D0982C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B06948D-3287-42F3-87F5-A203B492A45E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B06948D-3287-42F3-87F5-A203B492A45E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B06948D-3287-42F3-87F5-A203B492A45E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B06948D-3287-42F3-87F5-A203B492A45E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D23B693-C196-418C-90C7-D79A5A30D98A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D23B693-C196-418C-90C7-D79A5A30D98A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D23B693-C196-418C-90C7-D79A5A30D98A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D23B693-C196-418C-90C7-D79A5A30D98A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFD7BE4E-6C4A-429D-A89E-425287A14EFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFD7BE4E-6C4A-429D-A89E-425287A14EFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFD7BE4E-6C4A-429D-A89E-425287A14EFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFD7BE4E-6C4A-429D-A89E-425287A14EFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

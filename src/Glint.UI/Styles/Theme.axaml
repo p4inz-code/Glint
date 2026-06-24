@@ -1,0 +1,105 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- Section heading label (e.g. "DISPLAYS", "SOUND") -->
+  <Style Selector="TextBlock.heading">
+    <Setter Property="FontSize" Value="11"/>
+    <Setter Property="FontWeight" Value="SemiBold"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextMutedBrush}"/>
+    <Setter Property="LetterSpacing" Value="1"/>
+    <Setter Property="Margin" Value="2,0,0,6"/>
+  </Style>
+
+  <!-- Secondary / muted text -->
+  <Style Selector="TextBlock.muted">
+    <Setter Property="Foreground" Value="{DynamicResource TextMutedBrush}"/>
+    <Setter Property="FontSize" Value="12"/>
+  </Style>
+
+  <!-- Card-style panel used for each monitor / audio session row -->
+  <Style Selector="Border.card">
+    <Setter Property="Background" Value="{DynamicResource BgPanelBrush}"/>
+    <Setter Property="CornerRadius" Value="6"/>
+    <Setter Property="Padding" Value="12,10"/>
+  </Style>
+
+  <!-- Flat icon button (refresh, etc.) -->
+  <Style Selector="Button.icon">
+    <Setter Property="Width" Value="32"/>
+    <Setter Property="Height" Value="32"/>
+    <Setter Property="CornerRadius" Value="6"/>
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="Padding" Value="0"/>
+  </Style>
+  <Style Selector="Button.icon:pointerover">
+    <Setter Property="Background" Value="#1FFFFFFF"/>
+  </Style>
+
+  <!-- "Add preset" button -->
+  <Style Selector="Button.add-preset">
+    <Setter Property="CornerRadius" Value="6"/>
+    <Setter Property="Background" Value="{DynamicResource BgPanelBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+    <Setter Property="Padding" Value="12,6"/>
+    <Setter Property="MinHeight" Value="32"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="BorderBrush" Value="#2A2A2E"/>
+  </Style>
+  <Style Selector="Button.add-preset:pointerover">
+    <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
+  </Style>
+
+  <!-- Preset chip container -->
+  <Style Selector="Border.preset-chip">
+    <Setter Property="Background" Value="{DynamicResource BgPanelBrush}"/>
+    <Setter Property="CornerRadius" Value="6"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="BorderBrush" Value="#2A2A2E"/>
+    <Setter Property="Padding" Value="4"/>
+    <Setter Property="Margin" Value="0,0,6,6"/>
+  </Style>
+  <Style Selector="Border.preset-chip:pointerover">
+    <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
+  </Style>
+
+  <!-- Small ghost icon button inside preset chips (apply / delete) -->
+  <Style Selector="Button.ghost">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextMutedBrush}"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Padding" Value="0"/>
+    <Setter Property="MinWidth" Value="32"/>
+    <Setter Property="MinHeight" Value="32"/>
+    <Setter Property="CornerRadius" Value="4"/>
+    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="Button.ghost:pointerover">
+    <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
+    <Setter Property="Background" Value="#1FFFFFFF"/>
+  </Style>
+
+  <!-- Inline editable preset name -->
+  <Style Selector="TextBox.preset-name">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+    <Setter Property="FontSize" Value="12"/>
+    <Setter Property="Padding" Value="4,0"/>
+    <Setter Property="MinHeight" Value="32"/>
+    <Setter Property="MinWidth" Value="64"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+
+  <!-- Slider: ensure a comfortable 32px hit target while keeping a slim track -->
+  <Style Selector="Slider">
+    <Setter Property="MinHeight" Value="32"/>
+  </Style>
+
+</Styles>

@@ -1,0 +1,170 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Glint.UI.ViewModels"
+        x:Class="Glint.UI.Views.FlyoutWindow"
+        x:DataType="vm:FlyoutViewModel"
+        Title="Glint"
+        Width="340"
+        SizeToContent="Height"
+        CanResize="False"
+        SystemDecorations="None"
+        ShowInTaskbar="False"
+        Topmost="True"
+        Background="{DynamicResource BgPrimaryBrush}"
+        TransparencyLevelHint="None"
+        WindowStartupLocation="Manual">
+
+  <Window.Resources>
+
+    <!-- One row per detected monitor -->
+    <DataTemplate x:Key="MonitorTemplate" x:DataType="vm:MonitorSliderViewModel">
+      <Border Classes="card" Margin="0,0,0,8">
+        <StackPanel Spacing="4">
+          <Grid ColumnDefinitions="*,Auto">
+            <TextBlock Grid.Column="0"
+                       Text="{Binding DisplayName}"
+                       Foreground="{DynamicResource TextPrimaryBrush}"
+                       FontSize="13"
+                       TextTrimming="CharacterEllipsis"
+                       VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1"
+                       Text="{Binding Brightness, StringFormat='{}{0}%'}"
+                       Classes="muted"
+                       VerticalAlignment="Center"
+                       IsVisible="{Binding IsSupported}"/>
+          </Grid>
+
+          <Slider Minimum="0" Maximum="100"
+                  Value="{Binding Brightness}"
+                  IsVisible="{Binding IsSupported}"/>
+
+          <TextBlock Text="Not supported on this display (no DDC/CI)"
+                     Classes="muted"
+                     IsVisible="{Binding IsUnsupported}"/>
+        </StackPanel>
+      </Border>
+    </DataTemplate>
+
+    <!-- One row per running app with an audio session -->
+    <DataTemplate x:Key="AudioSessionTemplate" x:DataType="vm:AudioSessionViewModel">
+      <Border Classes="card" Margin="0,0,0,8">
+        <StackPanel Spacing="4">
+          <Grid ColumnDefinitions="*,Auto,Auto">
+            <TextBlock Grid.Column="0"
+                       Text="{Binding DisplayName}"
+                       Foreground="{DynamicResource TextPrimaryBrush}"
+                       FontSize="13"
+                       TextTrimming="CharacterEllipsis"
+                       VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1"
+                       Text="{Binding Volume, StringFormat='{}{0}%'}"
+                       Classes="muted"
+                       VerticalAlignment="Center"
+                       Margin="0,0,10,0"/>
+            <ToggleSwitch Grid.Column="2"
+                          IsChecked="{Binding IsMuted}"
+                          OnContent=""
+                          OffContent=""
+                          ToolTip.Tip="Mute"/>
+          </Grid>
+
+          <Slider Minimum="0" Maximum="100"
+                  Value="{Binding Volume}"
+                  IsEnabled="{Binding IsNotMuted}"/>
+        </StackPanel>
+      </Border>
+    </DataTemplate>
+
+    <!-- Preset chip: apply, rename, delete -->
+    <DataTemplate x:Key="PresetTemplate" x:DataType="vm:PresetViewModel">
+      <Border Classes="preset-chip">
+        <StackPanel Orientation="Horizontal" Spacing="2">
+          <Button Classes="ghost" Command="{Binding ApplyCommand}" ToolTip.Tip="Apply preset">
+            <TextBlock Text="&#9654;" FontSize="10"/>
+          </Button>
+          <TextBox Classes="preset-name" Text="{Binding Name}"/>
+          <Button Classes="ghost" Command="{Binding DeleteCommand}" ToolTip.Tip="Delete preset">
+            <TextBlock Text="&#10005;" FontSize="10"/>
+          </Button>
+        </StackPanel>
+      </Border>
+    </DataTemplate>
+
+  </Window.Resources>
+
+  <Border Padding="14">
+    <StackPanel Spacing="14">
+
+      <!-- Header -->
+      <Grid ColumnDefinitions="*,Auto">
+        <StackPanel Grid.Column="0" Spacing="0">
+          <TextBlock Text="Glint" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource AccentBrush}"/>
+          <TextBlock Text="Light, tuned." Classes="muted"/>
+        </StackPanel>
+        <Button Grid.Column="1" Classes="icon" Command="{Binding RefreshCommand}" ToolTip.Tip="Refresh">
+          <TextBlock Text="&#10227;" FontSize="15"/>
+        </Button>
+      </Grid>
+
+      <!-- Displays -->
+      <StackPanel IsVisible="{Binding AnyMonitors}" Spacing="0">
+        <TextBlock Text="DISPLAYS" Classes="heading"/>
+        <ItemsControl ItemsSource="{Binding Monitors}" ItemTemplate="{StaticResource MonitorTemplate}"/>
+
+        <Grid ColumnDefinitions="*,Auto" Margin="2,2,2,0">
+          <TextBlock Grid.Column="0"
+                     Text="Sync brightness across displays"
+                     Foreground="{DynamicResource TextPrimaryBrush}"
+                     FontSize="12"
+                     VerticalAlignment="Center"/>
+          <ToggleSwitch Grid.Column="1" IsChecked="{Binding SyncEnabled}" OnContent="" OffContent=""/>
+        </Grid>
+      </StackPanel>
+
+      <TextBlock Text="No displays detected"
+                 Classes="muted"
+                 IsVisible="{Binding NoMonitors}"/>
+
+      <!-- Presets -->
+      <StackPanel Spacing="6">
+        <TextBlock Text="PRESETS" Classes="heading"/>
+        <ItemsControl ItemsSource="{Binding Presets}" ItemTemplate="{StaticResource PresetTemplate}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel/>
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+        </ItemsControl>
+        <Button Classes="add-preset" Command="{Binding AddPresetCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
+          <TextBlock Text="+ Save current as preset" FontSize="12"/>
+        </Button>
+      </StackPanel>
+
+      <!-- Sound -->
+      <StackPanel Spacing="0">
+        <TextBlock Text="SOUND" Classes="heading"/>
+
+        <Border Classes="card" Margin="0,0,0,8">
+          <StackPanel Spacing="4">
+            <Grid ColumnDefinitions="*,Auto,Auto">
+              <TextBlock Grid.Column="0" Text="Master volume" Foreground="{DynamicResource TextPrimaryBrush}" FontSize="13" VerticalAlignment="Center"/>
+              <TextBlock Grid.Column="1" Text="{Binding MasterVolume, StringFormat='{}{0}%'}" Classes="muted" VerticalAlignment="Center" Margin="0,0,10,0"/>
+              <ToggleSwitch Grid.Column="2" IsChecked="{Binding IsMasterMuted}" OnContent="" OffContent="" ToolTip.Tip="Mute"/>
+            </Grid>
+            <Slider Minimum="0" Maximum="100" Value="{Binding MasterVolume}" IsEnabled="{Binding IsMasterNotMuted}"/>
+          </StackPanel>
+        </Border>
+
+        <ItemsControl ItemsSource="{Binding AudioSessions}" ItemTemplate="{StaticResource AudioSessionTemplate}"/>
+      </StackPanel>
+
+      <!-- Privacy footnote -->
+      <TextBlock Text="Glint collects no data, makes no network requests, and includes no telemetry."
+                 Classes="muted"
+                 FontSize="10"
+                 TextWrapping="Wrap"/>
+
+    </StackPanel>
+  </Border>
+
+</Window>

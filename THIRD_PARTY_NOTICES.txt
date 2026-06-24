@@ -1,0 +1,43 @@
+THIRD-PARTY NOTICES
+===================
+
+Glint is built with the following open-source components. Each is used under
+its own license, reproduced (or summarized with a link) below. None of these
+projects endorse Glint or Northbyte Studios.
+
+--------------------------------------------------------------------------
+Avalonia UI
+--------------------------------------------------------------------------
+Used for: cross-platform UI framework (windows, tray icon, controls, theming)
+License: MIT License
+Project: https://github.com/AvaloniaUI/Avalonia
+
+Includes:
+  - Avalonia
+  - Avalonia.Desktop
+  - Avalonia.Themes.Fluent
+  - Avalonia.Fonts.Inter (bundles the Inter typeface, licensed separately
+    under the SIL Open Font License 1.1 — https://github.com/rsms/inter)
+
+--------------------------------------------------------------------------
+NAudio
+--------------------------------------------------------------------------
+Used for: master and per-application volume control via WASAPI
+License: MIT License
+Project: https://github.com/naudio/NAudio
+
+Includes:
+  - NAudio
+  - NAudio.Wasapi
+
+--------------------------------------------------------------------------
+System.Management
+--------------------------------------------------------------------------
+Used for: WMI access for internal display brightness and monitor identification
+License: MIT License
+Project: https://github.com/dotnet/runtime
+
+--------------------------------------------------------------------------
+
+Full license texts for the above are available from their respective project
+repositories linked above. If you redistribute Glint, please retain this file.

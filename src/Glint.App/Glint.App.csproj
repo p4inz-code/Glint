@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>Glint.App</RootNamespace>
+    <AssemblyName>Glint</AssemblyName>
+    <Version>1.0.0</Version>
+    <FileVersion>1.0.0.0</FileVersion>
+    <InformationalVersion>1.0.0-alpha</InformationalVersion>
+    <ApplicationIcon>..\..\assets\icons\glint.ico</ApplicationIcon>
+    <!-- Required to avoid AccessViolationException with CsWinRT AOT optimizer per project rules -->
+    <CsWinRTAotOptimizerEnabled>false</CsWinRTAotOptimizerEnabled>
+
+    <!--
+      Without this, PublishSingleFile=true bundles native libraries (libSkiaSharp.dll,
+      libHarfBuzzSharp.dll) INSIDE the .exe but never extracts them at runtime, causing
+      Avalonia's Skia renderer to throw DllNotFoundException on startup. This forces them
+      to be unpacked to disk (a per-machine temp/extraction folder) on first run.
+    -->
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Glint.Core\Glint.Core.csproj" />
+    <ProjectReference Include="..\Glint.Windows\Glint.Windows.csproj" />
+    <ProjectReference Include="..\Glint.UI\Glint.UI.csproj" />
+  </ItemGroup>
+
+</Project>
