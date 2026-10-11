@@ -3,7 +3,7 @@ THIRD-PARTY NOTICES
 
 Glint is built with the following open-source components. Each is used under
 its own license, reproduced (or summarized with a link) below. None of these
-projects endorse Glint or Northbyte Studios.
+projects endorse Glint or P4inz Interactive Labs.
 
 --------------------------------------------------------------------------
 Avalonia UI

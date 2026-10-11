@@ -2,7 +2,7 @@
 setlocal
 
 echo ============================================
-echo   Glint Build Script (Northbyte Studios)
+echo   Glint Build Script (P4inz Interactive Labs)
 echo ============================================
 
 set CONFIG=Release

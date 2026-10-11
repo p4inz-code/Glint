@@ -3,7 +3,7 @@
 **Light, tuned.**
 
 Glint is a free, lightweight Windows tray utility for controlling display brightness
-and audio volume — all monitors, all apps, one flyout. Built by **Northbyte Studios**.
+and audio volume — all monitors, all apps, one flyout. Built by **P4inz Interactive Labs**.
 
 ---
 
@@ -93,7 +93,7 @@ MIT — see [LICENSE.txt](LICENSE.txt). Third-party components are listed in
 
 ## Credits
 
-Built by **Northbyte Studios**.
+Built by **P4inz Interactive Labs**.
 
 ---
 
